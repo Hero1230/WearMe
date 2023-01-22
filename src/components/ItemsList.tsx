@@ -9,35 +9,35 @@ const items = [
 		price: 200,
 	},
 	{
-		id: "i1",
+		id: "i2",
 		title: "Nike Jordan",
 		description:
 			"If you are looking for a modern sneaker that is easy to style, or are you just looking for a shoe for the coming summer, then this sneaker is just for you!",
 		price: 200,
 	},
 	{
-		id: "i1",
+		id: "i3",
 		title: "Nike Jordan",
 		description:
 			"If you are looking for a modern sneaker that is easy to style, or are you just looking for a shoe for the coming summer, then this sneaker is just for you!",
 		price: 200,
 	},
 	{
-		id: "i1",
+		id: "i4",
 		title: "Nike Jordan",
 		description:
 			"If you are looking for a modern sneaker that is easy to style, or are you just looking for a shoe for the coming summer, then this sneaker is just for you!",
 		price: 200,
 	},
 	{
-		id: "i1",
+		id: "i5",
 		title: "Nike Jordan",
 		description:
 			"If you are looking for a modern sneaker that is easy to style, or are you just looking for a shoe for the coming summer, then this sneaker is just for you!",
 		price: 200,
 	},
 	{
-		id: "i1",
+		id: "i6",
 		title: "Nike Jordan",
 		description:
 			"If you are looking for a modern sneaker that is easy to style, or are you just looking for a shoe for the coming summer, then this sneaker is just for you!",
@@ -54,6 +54,7 @@ const ItemsList = () => {
 					title={item.title}
 					description={item.description}
 					price={item.price}
+					id={item.id}
 				/>
 			))}
 		</div>
