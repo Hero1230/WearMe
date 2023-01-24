@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 
 const ItemCard = (props: Item) => {
 	const dispatch = useDispatch();
-	const { title, description, price, id } = props;
+	const { title, description, price } = props;
 	return (
 		<div className="lg:w-[40%] sm:w-[90%] md:h-[20rem] xl:w-[30%] flex justify-between align-middle rounded-md overflow-hidden">
 			<div className="w-[100%]">
@@ -25,7 +25,7 @@ const ItemCard = (props: Item) => {
 					<button
 						className="bg-purple-500 p-2 rounded text-red-50"
 						onClick={() =>
-							dispatch(increaseCartQuantity({ ...props, quantity: 1, id }))
+							dispatch(increaseCartQuantity({ ...props, quantity: 1 }))
 						}>
 						ADD TO CART
 					</button>
