@@ -1,17 +1,11 @@
 import { increaseCartQuantity } from "@/features/cart/CartSlice";
+import { Item } from "@/types/types";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
 
-interface Props {
-	title: string;
-	description: string;
-	price: number;
-	id: string;
-}
-
-const ItemCard = (props: Props) => {
+const ItemCard = (props: Item) => {
 	const dispatch = useDispatch();
-	const { title, description, price } = props;
+	const { title, description, price, id } = props;
 	return (
 		<div className="lg:w-[40%] sm:w-[90%] md:h-[20rem] xl:w-[30%] flex justify-between align-middle rounded-md overflow-hidden">
 			<div className="w-[100%]">
@@ -30,7 +24,9 @@ const ItemCard = (props: Props) => {
 				<div className="pt-2 flex flex-row gap-1">
 					<button
 						className="bg-purple-500 p-2 rounded text-red-50"
-						onClick={() => dispatch(increaseCartQuantity())}>
+						onClick={() =>
+							dispatch(increaseCartQuantity({ ...props, quantity: 1, id }))
+						}>
 						ADD TO CART
 					</button>
 					<button className="flex justify-center items-center bg-purple-500 rounded w-10">
