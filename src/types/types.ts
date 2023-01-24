@@ -8,5 +8,8 @@ export interface Item {
 
 export interface CartInitialState {
 	items: Item[];
-	quantity: number;
+}
+
+export interface CartState {
+	cart: CartInitialState;
 }

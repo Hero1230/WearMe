@@ -1,8 +1,8 @@
-import ItemsList from "@/components/ItemsList";
+import ItemsList from "@/components/item/ItemsList";
 
 export default function Home() {
 	return (
-		<div className="flex justify-center w-screen m-4">
+		<div className="flex justify-center ml-[2rem]">
 			<ItemsList />
 		</div>
 	);
