@@ -4,7 +4,7 @@ import Link from "next/link";
 const EmptyCart = () => {
 	return (
 		<div className="w-[100%] flex justify-center items-center flex-col">
-			<div className="w-[40%]">
+			<div className="lg:w-[40%] md:w-[60%] w-[100%]">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					data-name="Layer 1"
@@ -274,7 +274,7 @@ const EmptyCart = () => {
 			<div className="flex flex-col items-center justify-center w-[100%]">
 				<p className="py-1 text-lg">Your cart is empty.</p>
 				<p className="py-1 text-lg">Don't give up on finding it!</p>
-				<Link href="/" className="w-[20%]">
+				<Link href="/" className="w-[80%] lg:w-[20%] md:w-[30%]">
 					<button className="bg-purple-600 mt-4 text-white w-[100%] lg:h-12 h-[4.5rem] rounded">
 						Keep shopping
 					</button>
