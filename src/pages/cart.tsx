@@ -1,3 +1,4 @@
+import EmptyCart from "@/components/cart/EmptyCart";
 import FinalizeCard from "@/components/cart/FinalizeCard";
 import { CartState } from "@/types/types";
 import { useSelector } from "react-redux";
@@ -6,11 +7,7 @@ import ItemCard from "../components/cart/ItemCard";
 const Cart = () => {
 	const items = useSelector((state: CartState) => state.cart.items);
 	if (items.length === 0) {
-		return (
-			<div>
-				<h1>Your cart is empty!</h1>
-			</div>
-		);
+		return <EmptyCart />;
 	}
 	return (
 		<div className="lg:m-[5rem] m-[2rem] flex justify-center items-start gap-[10rem] flex-wrap lg:flex-nowrap">
