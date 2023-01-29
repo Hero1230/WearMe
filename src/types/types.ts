@@ -13,3 +13,16 @@ export interface CartInitialState {
 export interface CartState {
 	cart: CartInitialState;
 }
+
+export interface ProductFetch {
+	category: string;
+	description: string;
+	id: string;
+	price: number;
+	title: string;
+}
+export interface ItemListPreviewProps {
+	category: string;
+	title: string;
+	quantity: number;
+}

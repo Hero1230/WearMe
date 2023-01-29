@@ -6,17 +6,14 @@ import { useSelector } from "react-redux";
 const MainHeader = () => {
 	const items = useSelector((state: CartState) => state.cart.items);
 	return (
-		<header className="p-2 flex justify-between items-center">
-			<div className="text-3xl sm:ml-[2rem] md:ml-[5rem]">
+		<header className="py-[1rem] flex justify-between items-center md:mx-[5rem] mx-[2rem]">
+			<div className="text-3xl">
 				<Link href="/">
 					Wear<span className="text-purple-500">Me</span>
 				</Link>
 			</div>
 			<nav>
-				<ul className="text-xl flex justify-between items-center gap-4 md:mr-[4rem]">
-					<li>
-						<Link href="/login">Login</Link>
-					</li>
+				<ul className="text-xl flex justify-between items-center gap-4">
 					<Link href="/cart">
 						<li
 							className={`p-2 rounded-md border flex justify-center items-center border-purple-500 gap-2`}>
