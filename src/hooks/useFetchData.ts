@@ -1,3 +1,4 @@
+import { ProductFetch } from "@/types/types";
 import {
 	collection,
 	getDocs,
@@ -10,7 +11,7 @@ import { useEffect, useState } from "react";
 import { db } from "../firebase/index";
 
 export default function useFetchData() {
-	const [data, setData] = useState<any>([]);
+	const [data, setData] = useState<ProductFetch[]>([]);
 	const [lastVisible, setLastVisible] = useState<any>(null);
 	const [count, setCount] = useState(0);
 	const [isLoading, setIsLoading] = useState(false);
@@ -33,7 +34,16 @@ export default function useFetchData() {
 				setIsLoading(false);
 				return;
 			}
-			const products = documentSnapshots.docs.map((product) => product.data());
+			const products = documentSnapshots.docs.map((product) => {
+				const data = product.data();
+				return {
+					category: data.category,
+					description: data.description,
+					id: data.id,
+					price: data.price,
+					title: data.title,
+				} as ProductFetch;
+			});
 			setData([...data, ...products]);
 			setLastVisible(documentSnapshots.docs[documentSnapshots.docs.length - 1]);
 			setIsLoading(false);
