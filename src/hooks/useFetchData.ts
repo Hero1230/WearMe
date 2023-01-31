@@ -6,11 +6,12 @@ import {
 	orderBy,
 	query,
 	startAfter,
+	where,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase/index";
 
-export default function useFetchData() {
+export default function useFetchData(category: string) {
 	const [data, setData] = useState<ProductFetch[]>([]);
 	const [lastVisible, setLastVisible] = useState<any>(null);
 	const [count, setCount] = useState(0);
@@ -18,12 +19,17 @@ export default function useFetchData() {
 	const [isAllFetch, setIsAllFetch] = useState(false);
 	const q =
 		count === 0
-			? query(collection(db, "products"), limit(1))
+			? query(
+					collection(db, "products"),
+					where("category", "==", category),
+					limit(3)
+			  )
 			: query(
 					collection(db, "products"),
-					orderBy("id"),
+					// orderBy("id"),
 					startAfter(lastVisible),
-					limit(1)
+					where("category", "==", category),
+					limit(3)
 			  );
 	useEffect(() => {
 		const fetchData = async () => {

@@ -6,6 +6,10 @@ export interface Item {
 	quantity?: number;
 }
 
+export interface ComponentItemProp {
+	items: Item[];
+}
+
 export interface CartInitialState {
 	items: Item[];
 }
