@@ -7,7 +7,7 @@ const ItemListPreview = (props: ItemListPreviewProps) => {
 	const { data, isLoading } = useFetch(props.category, props.quantity);
 	return (
 		<div className="w-[100%] flex justify-center flex-col lg:p-0 p-[1rem]">
-			<Link href="/">
+			<Link href={`/categories/${props.category}`}>
 				<h2 className="md:ml-[5rem] sm:ml-2 lg:pt-[2rem] lg:pb-[1rem] py-[1rem] text-4xl text-purple-400 font-bold">
 					{props.title}
 				</h2>
