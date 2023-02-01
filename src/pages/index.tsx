@@ -1,5 +1,4 @@
 import ItemListPreview from "@/components/item-list-preview/ItemListPreview";
-import useFetchData from "../hooks/useFetchData";
 import Image from "next/image";
 
 export default function Home() {

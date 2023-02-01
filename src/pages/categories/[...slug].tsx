@@ -2,24 +2,25 @@
 import useFetchData from "../../hooks/useFetchData";
 import ItemsList from "@/components/item-list/ItemsList";
 import { useRouter } from "next/router";
+import Loader from "@/components/loader/Loader";
 
 const FilteredProducts = () => {
 	const router = useRouter();
 	if (!router.query.slug) {
-		return <p>Invalid URL query</p>;
+		return;
 	}
 
 	const query = router.query.slug[0];
 	const { data, isLoading, setCount, isAllFetch } = useFetchData(query);
 
-	if (!data || data.length === 0) {
+	if (!data || (data.length === 0 && !isLoading)) {
 		return <p>No products found for the chosen filter!</p>;
 	}
 
 	return (
 		<div className="flex flex-col items-center">
 			<ItemsList items={data} />
-			{isLoading && <p>Loading...</p>}
+			{isLoading && <Loader />}
 			{!isAllFetch && !isLoading && (
 				<button
 					className="text-xl border-purple-500 border-2 lg:w-[10%] w-[40%] p-2 m-[1rem] rounded-md text-purple-500 hover:text-white hover:bg-purple-500"

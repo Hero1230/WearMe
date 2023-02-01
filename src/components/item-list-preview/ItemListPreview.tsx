@@ -2,6 +2,7 @@ import useFetch from "@/hooks/useFetch";
 import { ItemListPreviewProps } from "@/types/types";
 import Link from "next/link";
 import ItemCard from "../item/ItemCard";
+import Loader from "../loader/Loader";
 
 const ItemListPreview = (props: ItemListPreviewProps) => {
 	const { data, isLoading } = useFetch(props.category, props.quantity);
@@ -13,6 +14,7 @@ const ItemListPreview = (props: ItemListPreviewProps) => {
 				</h2>
 			</Link>
 			<div className="flex justify-center flex-wrap">
+				{isLoading && <Loader />}
 				{data.map((item) => (
 					<ItemCard
 						key={item.id}
