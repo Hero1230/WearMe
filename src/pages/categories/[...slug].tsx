@@ -3,6 +3,7 @@ import useFetchData from "../../hooks/useFetchData";
 import ItemsList from "@/components/item-list/ItemsList";
 import { useRouter } from "next/router";
 import Loader from "@/components/loader/Loader";
+import NoProductsFound from "@/components/no-products-found/NoProductsFound";
 
 const FilteredProducts = () => {
 	const router = useRouter();
@@ -14,7 +15,7 @@ const FilteredProducts = () => {
 	const { data, isLoading, setCount, isAllFetch } = useFetchData(query);
 
 	if (!data || (data.length === 0 && !isLoading)) {
-		return <p>No products found for the chosen filter!</p>;
+		return <NoProductsFound />;
 	}
 
 	return (
