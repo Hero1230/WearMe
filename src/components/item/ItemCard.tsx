@@ -1,16 +1,20 @@
 import { increaseCartQuantity } from "@/features/cart/CartSlice";
+import { storage } from "../../firebase/index";
 import { Item } from "@/types/types";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
+import useGetImageUrl from "@/hooks/useGetImageUrl";
 
 const ItemCard = (props: Item) => {
+	const imageUrl = useGetImageUrl(`images/${props.id}.webp`);
+	console.log(imageUrl);
 	const dispatch = useDispatch();
 	const { title, description, price } = props;
 	return (
 		<div className="lg:w-[40%] sm:w-[90%] md:h-[20rem] xl:w-[30%] flex justify-between align-middle rounded-md overflow-hidden">
 			<div className="w-[100%]">
 				<Image
-					src="/1_de42db09-7b2a-4f7f-bfea-aad7f9215783_1500x5000_crop_center.webp"
+					src={imageUrl}
 					alt={title}
 					width={240}
 					height={160}
@@ -18,7 +22,10 @@ const ItemCard = (props: Item) => {
 				/>
 			</div>
 			<div className="p-5">
-				<h2 className="text-3xl">{title.toLocaleUpperCase()}</h2>
+				<h2 className="text-xl">
+					{title.toLocaleUpperCase().substring(0, 25)}
+					{title.length > 25 && "..."}
+				</h2>
 				<p className="py-2 text-3xl text-purple-500">${price}</p>
 				<p className="py-3">{description.substring(0, 60)}...</p>
 				<div className="pt-2 flex flex-row gap-1">

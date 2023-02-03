@@ -21,15 +21,14 @@ export default function useFetchData(category: string) {
 		count === 0
 			? query(
 					collection(db, "products"),
-					where("category", "==", category),
-					limit(3)
+					where("category", "array-contains-any", [category]),
+					limit(6)
 			  )
 			: query(
 					collection(db, "products"),
-					// orderBy("id"),
 					startAfter(lastVisible),
-					where("category", "==", category),
-					limit(3)
+					where("category", "array-contains-any", [category]),
+					limit(6)
 			  );
 	useEffect(() => {
 		const fetchData = async () => {
@@ -45,7 +44,7 @@ export default function useFetchData(category: string) {
 				return {
 					category: data.category,
 					description: data.description,
-					id: data.id,
+					id: product.id,
 					price: data.price,
 					title: data.title,
 				} as ProductFetch;

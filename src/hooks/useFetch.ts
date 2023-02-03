@@ -8,7 +8,7 @@ export default function useFetch(category: string, quantity: number) {
 	const [isLoading, setIsLoading] = useState(false);
 	const q = query(
 		collection(db, "products"),
-		where("category", "==", category),
+		where("category", "array-contains-any", [category]),
 		limit(quantity)
 	);
 	useEffect(() => {
@@ -20,7 +20,7 @@ export default function useFetch(category: string, quantity: number) {
 				return {
 					category: data.category,
 					description: data.description,
-					id: data.id,
+					id: product.id,
 					price: data.price,
 					title: data.title,
 				} as ProductFetch;
