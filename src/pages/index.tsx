@@ -14,9 +14,13 @@ export default function Home() {
 				/>
 			</div>
 			<ItemListPreview category="bestseller" quantity={3} title="Bestsellers" />
-			<ItemListPreview category="bestseller" quantity={3} title="Recommended" />
-			<ItemListPreview category="bestseller" quantity={3} title="Mid" />
-			<ItemListPreview category="bestseller" quantity={3} title="Low" />
+			<ItemListPreview
+				category="recommended"
+				quantity={3}
+				title="Recommended"
+			/>
+			<ItemListPreview category="mid" quantity={3} title="Mid" />
+			<ItemListPreview category="low" quantity={3} title="Low" />
 		</>
 	);
 }

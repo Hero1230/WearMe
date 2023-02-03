@@ -6,24 +6,22 @@ import {
 	increaseCartQuantity,
 	removeFromCart,
 } from "@/features/cart/CartSlice";
+import useGetImageUrl from "@/hooks/useGetImageUrl";
 
 const ItemCard = (props: Item) => {
+	const imageUrl = useGetImageUrl(`images/${props.id}.webp`);
 	const dispatch = useDispatch();
 	const { title, price, quantity, id } = props;
 	return (
 		<div className="w-[100%] h-[10rem] flex justify-between items-center overflow-hidden">
-			<div className="w-[30%]">
-				<Image
-					src={
-						"/1_de42db09-7b2a-4f7f-bfea-aad7f9215783_1500x5000_crop_center.webp"
-					}
-					alt={title}
-					width={260}
-					height={200}
-				/>
+			<div className="md:w-[30%] w-[60%]">
+				<Image src={imageUrl} alt={title} width={260} height={200} />
 			</div>
-			<div className="h-[100%] text-3xl">
-				<p>{title}</p>
+			<div className="h-[100%] md:text-3xl text-xl">
+				<p>
+					{title.substring(0, 15)}
+					{title.length > 15 && "..."}
+				</p>
 			</div>
 			<div className="flex-col sm:flex hidden">
 				<button
