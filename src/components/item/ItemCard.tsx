@@ -18,6 +18,7 @@ const ItemCard = (props: Item) => {
 					alt={title}
 					width={240}
 					height={160}
+					sizes="100%"
 					className="object-cover"
 				/>
 			</div>

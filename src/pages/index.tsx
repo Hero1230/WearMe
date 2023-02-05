@@ -1,15 +1,19 @@
 import ItemListPreview from "@/components/item-list-preview/ItemListPreview";
 import Image from "next/image";
+import mainImage from "../../public/taylor-smith-aDZ5YIuedQg-unsplash.jpg";
 
 export default function Home() {
 	return (
 		<>
 			<div className="flex h-[20%] w-full items-center justify-center mb-[3rem]">
 				<Image
-					src="/taylor-smith-aDZ5YIuedQg-unsplash.jpg"
-					alt=""
-					height={1000}
-					width={1000}
+					src={mainImage}
+					alt="main image of nike"
+					placeholder="blur"
+					priority
+					sizes="100vw"
+					width={200}
+					height={200}
 					className="object-cover h-[30rem] w-screen"
 				/>
 			</div>
