@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import ArrowUp from "../arrow-up/ArrowUp";
 import MainHeader from "./MainHeader";
 
 interface Props {
@@ -9,7 +10,10 @@ const Layout = (props: Props) => {
 	return (
 		<>
 			<MainHeader />
-			<main>{props.children}</main>
+			<main className="relative">
+				{props.children}
+				<ArrowUp />
+			</main>
 		</>
 	);
 };
