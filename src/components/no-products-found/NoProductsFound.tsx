@@ -1,8 +1,15 @@
+import { Item } from "@/types/types";
+import fetchData from "@/utils/FetchData";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ItemListPreview from "../item-list-preview/ItemListPreview";
+import Loader from "../loader/Loader";
 
 export default function NoProductsFound() {
+	const [data, setData] = useState<Item[] | null>(null);
+	useEffect(() => {
+		fetchData("bestseller", 3).then((prod) => setData(prod));
+	}, []);
 	return (
 		<div className="flex justify-center items-center  flex-col">
 			<div>
@@ -218,11 +225,11 @@ export default function NoProductsFound() {
 					</button>
 				</Link>
 			</div>
-			<ItemListPreview
-				title="You might like"
-				category="bestseller"
-				quantity={3}
-			/>
+			{data ? (
+				<ItemListPreview title="You might like" link="bestseller" data={data} />
+			) : (
+				<Loader />
+			)}
 		</div>
 	);
 }

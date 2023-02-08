@@ -1,8 +1,9 @@
 import ItemListPreview from "@/components/item-list-preview/ItemListPreview";
+import fetchData from "@/utils/FetchData";
 import Image from "next/image";
 import mainImage from "../../public/taylor-smith-aDZ5YIuedQg-unsplash.jpg";
 
-export default function Home() {
+export default function Home(props: any) {
 	return (
 		<>
 			<div className="flex h-[20%] w-full items-center justify-center mb-[3rem]">
@@ -17,14 +18,35 @@ export default function Home() {
 					className="object-cover h-[30rem] w-screen"
 				/>
 			</div>
-			<ItemListPreview category="bestseller" quantity={3} title="Bestsellers" />
 			<ItemListPreview
-				category="recommended"
-				quantity={3}
+				data={props.bestsellerData}
+				link="bestseller"
+				title="Bestsellers"
+			/>
+			<ItemListPreview
+				data={props.recommendedData}
+				link="recommended"
 				title="Recommended"
 			/>
-			<ItemListPreview category="mid" quantity={3} title="Mid" />
-			<ItemListPreview category="low" quantity={3} title="Low" />
+			<ItemListPreview data={props.midData} link="mid" title="Mid" />
+			<ItemListPreview data={props.lowData} link="low" title="Low" />
 		</>
 	);
+}
+
+export async function getStaticProps() {
+	const bestsellerData = await fetchData("bestseller", 3);
+	const recommendedData = await fetchData("recommended", 3);
+	const midData = await fetchData("mid", 3);
+	const lowData = await fetchData("low", 3);
+
+	return {
+		props: {
+			bestsellerData,
+			recommendedData,
+			midData,
+			lowData,
+		},
+		revalidate: 600,
+	};
 }
