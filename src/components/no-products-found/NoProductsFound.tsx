@@ -3,6 +3,7 @@ import fetchData from "@/utils/FetchData";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import ItemListPreview from "../item-list-preview/ItemListPreview";
+import Loader from "../loader/Loader";
 
 export default function NoProductsFound() {
 	const [data, setData] = useState<Item[] | null>(null);
@@ -224,7 +225,11 @@ export default function NoProductsFound() {
 					</button>
 				</Link>
 			</div>
-			<ItemListPreview title="You might like" link="bestseller" data={data} />
+			{data ? (
+				<ItemListPreview title="You might like" link="bestseller" data={data} />
+			) : (
+				<Loader />
+			)}
 		</div>
 	);
 }
