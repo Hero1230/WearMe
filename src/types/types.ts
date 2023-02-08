@@ -28,5 +28,5 @@ export interface ProductFetch {
 export interface ItemListPreviewProps {
 	link: string;
 	title: string;
-	data: Item[];
+	data: Item[] | null;
 }
