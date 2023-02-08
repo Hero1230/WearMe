@@ -9,29 +9,24 @@ interface ProductFetch {
 	title: string;
 }
 
-export default async function fetchData(
-	category: string,
-	quantity: number
-): Promise<{ data: ProductFetch[]; isLoading: boolean }> {
-	let data: ProductFetch[] = [];
-	let isLoading = true;
+export default async function fetchData(category: string, quantity: number) {
+	const data: ProductFetch[] = [];
 	const q = query(
 		collection(db, "products"),
-		where("category", "==", category),
+		where("category", "array-contains-any", [category]),
 		limit(quantity)
 	);
 
 	const documentSnapshots = await getDocs(q);
-	data = documentSnapshots.docs.map((product) => {
-		const data = product.data();
-		return {
-			category: data.category,
-			description: data.description,
-			id: data.id,
-			price: data.price,
-			title: data.title,
-		} as ProductFetch;
+	documentSnapshots.docs.forEach((doc) => {
+		const product = doc.data();
+		data.push({
+			category: product.category,
+			description: product.description,
+			price: product.price,
+			id: doc.id,
+			title: product.title,
+		});
 	});
-	isLoading = false;
-	return { data, isLoading };
+	return data;
 }

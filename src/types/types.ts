@@ -26,7 +26,7 @@ export interface ProductFetch {
 	title: string;
 }
 export interface ItemListPreviewProps {
-	category: string;
+	link: string;
 	title: string;
-	quantity: number;
+	data: Item[];
 }
