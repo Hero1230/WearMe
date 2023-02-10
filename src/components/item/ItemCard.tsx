@@ -1,15 +1,25 @@
 import { increaseCartQuantity } from "@/features/cart/CartSlice";
-import { storage } from "../../firebase/index";
 import { Item } from "@/types/types";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
 import useGetImageUrl from "@/hooks/useGetImageUrl";
+import { toast } from "react-toastify";
 
 const ItemCard = (props: Item) => {
 	const imageUrl = useGetImageUrl(`images/${props.id}.webp`);
-	console.log(imageUrl);
 	const dispatch = useDispatch();
 	const { title, description, price } = props;
+	const notify = () =>
+		toast.success("Item added to the cart!", {
+			position: "top-right",
+			autoClose: 2000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "light",
+		});
 	return (
 		<div className="lg:w-[40%] sm:w-[90%] md:h-[20rem] xl:w-[30%] flex justify-between align-middle rounded-md overflow-hidden">
 			<div className="w-[100%]">
@@ -32,9 +42,10 @@ const ItemCard = (props: Item) => {
 				<div className="pt-2 flex flex-row gap-1">
 					<button
 						className="bg-purple-500 p-2 rounded text-red-50"
-						onClick={() =>
-							dispatch(increaseCartQuantity({ ...props, quantity: 1 }))
-						}>
+						onClick={() => {
+							dispatch(increaseCartQuantity({ ...props, quantity: 1 }));
+							notify();
+						}}>
 						ADD TO CART
 					</button>
 					<button className="flex justify-center items-center bg-purple-500 rounded w-10">
