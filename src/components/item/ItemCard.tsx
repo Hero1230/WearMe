@@ -11,7 +11,7 @@ const ItemCard = (props: Item) => {
 	const { title, description, price } = props;
 	const notify = () =>
 		toast.success("Item added to the cart!", {
-			position: "top-right",
+			position: "bottom-right",
 			autoClose: 2000,
 			hideProgressBar: false,
 			closeOnClick: true,
