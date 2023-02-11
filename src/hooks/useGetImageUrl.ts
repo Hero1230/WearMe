@@ -9,6 +9,9 @@ export default function useGetImageUrl(url: string) {
 		setImageUrl(image);
 	};
 	useEffect(() => {
+		if (url === "") {
+			return;
+		}
 		getImage();
 	}, [url]);
 	return imageUrl;

@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import useGetImageUrl from "@/hooks/useGetImageUrl";
 import { toast } from "react-toastify";
 import Loader from "../loader/Loader";
+import Link from "next/link";
 
 const ItemCard = (props: Item) => {
 	const imageUrl = useGetImageUrl(`images/${props.id}.webp`);
@@ -23,27 +24,31 @@ const ItemCard = (props: Item) => {
 		});
 	return (
 		<div className="lg:w-[40%] sm:w-[90%] md:h-[20rem] xl:w-[30%] flex justify-between align-middle rounded-md overflow-hidden">
-			<div className="w-[100%]">
-				{!imageUrl ? (
-					<Loader />
-				) : (
-					<Image
-						src={imageUrl}
-						alt={title}
-						width={240}
-						height={160}
-						sizes="100%"
-						className="object-cover"
-					/>
-				)}
-			</div>
+			<Link href={"/" + props.id} className="w-[100%]">
+				<div className="w-[100%]">
+					{!imageUrl ? (
+						<Loader />
+					) : (
+						<Image
+							src={imageUrl}
+							alt={title}
+							width={240}
+							height={160}
+							sizes="100%"
+							className="object-cover"
+						/>
+					)}
+				</div>
+			</Link>
 			<div className="p-5">
-				<h2 className="text-xl">
-					{title.toLocaleUpperCase().substring(0, 25)}
-					{title.length > 25 && "..."}
-				</h2>
-				<p className="py-2 text-3xl text-purple-500">${price}</p>
-				<p className="py-3">{description.substring(0, 60)}...</p>
+				<Link href={"/" + props.id}>
+					<h2 className="text-xl">
+						{title.toLocaleUpperCase().substring(0, 25)}
+						{title.length > 25 && "..."}
+					</h2>
+					<p className="py-2 text-3xl text-purple-500">${price}</p>
+					<p className="py-3">{description.substring(0, 60)}...</p>
+				</Link>
 				<div className="pt-2 flex flex-row gap-1">
 					<button
 						className="bg-purple-500 p-2 rounded text-red-50"
