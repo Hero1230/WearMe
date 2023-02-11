@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useDispatch } from "react-redux";
 import useGetImageUrl from "@/hooks/useGetImageUrl";
 import { toast } from "react-toastify";
+import Loader from "../loader/Loader";
 
 const ItemCard = (props: Item) => {
 	const imageUrl = useGetImageUrl(`images/${props.id}.webp`);
@@ -23,14 +24,18 @@ const ItemCard = (props: Item) => {
 	return (
 		<div className="lg:w-[40%] sm:w-[90%] md:h-[20rem] xl:w-[30%] flex justify-between align-middle rounded-md overflow-hidden">
 			<div className="w-[100%]">
-				<Image
-					src={imageUrl}
-					alt={title}
-					width={240}
-					height={160}
-					sizes="100%"
-					className="object-cover"
-				/>
+				{!imageUrl ? (
+					<Loader />
+				) : (
+					<Image
+						src={imageUrl}
+						alt={title}
+						width={240}
+						height={160}
+						sizes="100%"
+						className="object-cover"
+					/>
+				)}
 			</div>
 			<div className="p-5">
 				<h2 className="text-xl">
