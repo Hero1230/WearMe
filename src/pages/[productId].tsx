@@ -1,56 +1,73 @@
 /* eslint-disable react/no-unescaped-entities */
 import ItemListPreview from "@/components/item-list-preview/ItemListPreview";
 import Loader from "@/components/loader/Loader";
+import { increaseCartQuantity } from "@/features/cart/CartSlice";
 import useGetImageUrl from "@/hooks/useGetImageUrl";
 import { Item } from "@/types/types";
 import fetchData from "@/utils/FetchData";
+import fetchSingleProduct from "@/utils/FetchSingleProduct";
+import { notifyAddItem, notifyComingSoon } from "@/utils/Notifications";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 const ProductDetails = () => {
+	const dispatch = useDispatch();
 	const router = useRouter();
-	const query = router.query.productId
+
+	const [product, setProduct] = useState<null | Item>(null);
+	const [data, setData] = useState<Item[] | null>(null);
+
+	const query = router.query.productId;
+	const queryImage = router.query.productId
 		? `images/${router.query.productId}.webp`
 		: "";
-	const imageUrl = useGetImageUrl(query);
+	const imageUrl = useGetImageUrl(queryImage);
 
-	const [data, setData] = useState<Item[] | null>(null);
 	useEffect(() => {
 		fetchData("bestseller", 3).then((prod) => setData(prod));
 	}, []);
+
+	useEffect(() => {
+		if (typeof query === "string") {
+			fetchSingleProduct(query).then((prod) => setProduct(prod));
+		}
+	}, [query]);
 
 	return (
 		<>
 			<div className="flex gap-[2rem] mx-[5rem] flex-col md:flex-row mb-[2rem]">
 				<div className="w-[100%] md:w-[45%]">
-					<Image
-						src={imageUrl}
-						alt={"siema"}
-						width={240}
-						height={160}
-						sizes="100%"
-						className="object-cover w-[100%]"
-					/>
+					{imageUrl ? (
+						<Image
+							src={imageUrl}
+							alt={"siema"}
+							width={240}
+							height={160}
+							sizes="100%"
+							className="object-cover w-[100%]"
+						/>
+					) : (
+						<Loader />
+					)}
 				</div>
 				<div className="flex justify-center flex-col w-[100%] md:w-[45%]">
-					<h2 className="text-3xl font-bold pb-[2rem]">
-						Nike Air Jordan 1 Low "White University Red
-					</h2>
-					<p className="opacity-60">
-						Denne Jordan 1 Low "White/university Red" kombinerer stil og komfort
-						i en utrolig enkel og clean farvesammensætning. Skoen består af en
-						hvid base, der står i smuk kontrast til det røde swoosh, der
-						garanteret sørger for mange blikke! Ønsker du en smøle mørkere
-						swoosh i en Air Force model anbefaler vi denne - Air Force 1 "Team
-						Red".
-					</p>
-					<p className="text-3xl font-bold py-[2rem]">$200</p>
+					<h2 className="text-3xl font-bold pb-[2rem]">{product?.title}</h2>
+					<p className="opacity-60">{product?.description}</p>
+					<p className="text-3xl font-bold py-[2rem]">${product?.price}</p>
 					<div className="pt-2 flex flex-row gap-1">
-						<button className="bg-purple-500 p-6 md:p-4 rounded text-red-50">
+						<button
+							className="bg-purple-500 p-6 md:p-4 rounded text-red-50"
+							onClick={() => {
+								dispatch(increaseCartQuantity({ ...product, quantity: 1 }));
+								notifyAddItem();
+							}}>
 							ADD TO CART
 						</button>
-						<button className="flex justify-center items-center bg-purple-500 rounded md:p-4 p-6">
+						<button
+							className="flex justify-center items-center bg-purple-500 rounded md:p-4 p-6"
+							onClick={notifyComingSoon}>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -63,11 +80,7 @@ const ProductDetails = () => {
 					</div>
 				</div>
 			</div>
-			{data ? (
-				<ItemListPreview title="You might like" link="bestseller" data={data} />
-			) : (
-				<Loader />
-			)}
+			<ItemListPreview title="You might like" link="bestseller" data={data} />
 		</>
 	);
 };
