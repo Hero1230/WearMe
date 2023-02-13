@@ -8,6 +8,8 @@ import {
 } from "@/features/cart/CartSlice";
 import useGetImageUrl from "@/hooks/useGetImageUrl";
 import Link from "next/link";
+import Loader from "../loader/Loader";
+import { notifyComingSoon } from "@/utils/Notifications";
 
 const ItemCard = (props: Item) => {
 	const imageUrl = useGetImageUrl(`images/${props.id}.webp`);
@@ -16,7 +18,11 @@ const ItemCard = (props: Item) => {
 	return (
 		<div className="w-[100%] h-[10rem] flex justify-between items-center overflow-hidden">
 			<Link href={"/" + props.id} className="md:w-[30%] w-[60%]">
-				<Image src={imageUrl} alt={title} width={260} height={200} />
+				{imageUrl ? (
+					<Image src={imageUrl} alt={title} width={260} height={200} />
+				) : (
+					<Loader />
+				)}
 			</Link>
 			<Link href={"/" + props.id} className="h-[100%] md:text-3xl text-xl">
 				<p>
@@ -30,7 +36,9 @@ const ItemCard = (props: Item) => {
 					onClick={() => dispatch(removeFromCart({ id }))}>
 					Remove
 				</button>
-				<button className="text-purple-700">Add to the wishlist</button>
+				<button className="text-purple-700" onClick={notifyComingSoon}>
+					Add to the wishlist
+				</button>
 			</div>
 			<div className="flex flex-col justify-center items-center gap-2">
 				<div className="flex justify-center items-center">

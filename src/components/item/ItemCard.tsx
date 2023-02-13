@@ -3,25 +3,14 @@ import { Item } from "@/types/types";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
 import useGetImageUrl from "@/hooks/useGetImageUrl";
-import { toast } from "react-toastify";
 import Loader from "../loader/Loader";
 import Link from "next/link";
+import { notifyAddItem, notifyComingSoon } from "@/utils/Notifications";
 
 const ItemCard = (props: Item) => {
 	const imageUrl = useGetImageUrl(`images/${props.id}.webp`);
 	const dispatch = useDispatch();
 	const { title, description, price } = props;
-	const notify = () =>
-		toast.success("Item added to the cart!", {
-			position: "bottom-right",
-			autoClose: 2000,
-			hideProgressBar: false,
-			closeOnClick: true,
-			pauseOnHover: true,
-			draggable: true,
-			progress: undefined,
-			theme: "light",
-		});
 	return (
 		<div className="lg:w-[40%] sm:w-[90%] md:h-[20rem] xl:w-[30%] flex justify-between align-middle rounded-md overflow-hidden">
 			<Link href={"/" + props.id} className="w-[100%]">
@@ -54,11 +43,13 @@ const ItemCard = (props: Item) => {
 						className="bg-purple-500 p-2 rounded text-red-50"
 						onClick={() => {
 							dispatch(increaseCartQuantity({ ...props, quantity: 1 }));
-							notify();
+							notifyAddItem();
 						}}>
 						ADD TO CART
 					</button>
-					<button className="flex justify-center items-center bg-purple-500 rounded w-10">
+					<button
+						className="flex justify-center items-center bg-purple-500 rounded w-10"
+						onClick={notifyComingSoon}>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
