@@ -4,6 +4,7 @@ import ItemsList from "@/components/item-list/ItemsList";
 import { useRouter } from "next/router";
 import Loader from "@/components/loader/Loader";
 import NoProductsFound from "@/components/no-products-found/NoProductsFound";
+import Head from "next/head";
 
 const FilteredProducts = () => {
 	const router = useRouter();
@@ -20,6 +21,9 @@ const FilteredProducts = () => {
 
 	return (
 		<div className="flex flex-col items-center">
+			<Head>
+				<title>WearMe - {query}</title>
+			</Head>
 			<ItemsList items={data} />
 			{isLoading && <Loader />}
 			{!isAllFetch && !isLoading && (

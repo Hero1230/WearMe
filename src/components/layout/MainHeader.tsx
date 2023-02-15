@@ -13,8 +13,10 @@ const MainHeader = () => {
 				</Link>
 			</div>
 			<nav>
-				<ul className="text-xl flex justify-between items-center gap-4">
-					<Link href="/cart">
+				<Link
+					href="/cart"
+					className="text-xl flex justify-between items-center gap-4">
+					<ul>
 						<li
 							className={`p-2 rounded-md border flex justify-center items-center border-purple-500 gap-2`}>
 							<svg
@@ -29,8 +31,8 @@ const MainHeader = () => {
 								{getTotalQuantity(items)}
 							</p>
 						</li>
-					</Link>
-				</ul>
+					</ul>
+				</Link>
 			</nav>
 		</header>
 	);

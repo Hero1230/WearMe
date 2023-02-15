@@ -16,9 +16,7 @@ export default function Home(props: any) {
 					alt="main image of nike"
 					placeholder="blur"
 					priority
-					sizes="100vw"
-					width={200}
-					height={200}
+					sizes="80vw"
 					className="object-cover h-[30rem] w-screen"
 				/>
 			</div>
