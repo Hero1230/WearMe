@@ -1,11 +1,15 @@
 import ItemListPreview from "@/components/item-list-preview/ItemListPreview";
 import fetchData from "@/utils/FetchData";
+import Head from "next/head";
 import Image from "next/image";
 import mainImage from "../../public/taylor-smith-aDZ5YIuedQg-unsplash.jpg";
 
 export default function Home(props: any) {
 	return (
 		<>
+			<Head>
+				<title>WearMe - Home</title>
+			</Head>
 			<div className="flex h-[20%] w-full items-center justify-center mb-[3rem]">
 				<Image
 					src={mainImage}
@@ -22,14 +26,26 @@ export default function Home(props: any) {
 				data={props.bestsellerData}
 				link="bestseller"
 				title="Bestsellers"
+				animation="fade-right"
 			/>
 			<ItemListPreview
 				data={props.recommendedData}
 				link="recommended"
 				title="Recommended"
+				animation="fade-right"
 			/>
-			<ItemListPreview data={props.midData} link="mid" title="Mid" />
-			<ItemListPreview data={props.lowData} link="low" title="Low" />
+			<ItemListPreview
+				data={props.midData}
+				link="mid"
+				title="Mid"
+				animation="fade-right"
+			/>
+			<ItemListPreview
+				data={props.lowData}
+				link="low"
+				title="Low"
+				animation="fade-right"
+			/>
 		</>
 	);
 }

@@ -226,7 +226,12 @@ export default function NoProductsFound() {
 				</Link>
 			</div>
 			{data ? (
-				<ItemListPreview title="You might like" link="bestseller" data={data} />
+				<ItemListPreview
+					title="You might like"
+					link="bestseller"
+					data={data}
+					animation="fade-right"
+				/>
 			) : (
 				<Loader />
 			)}
