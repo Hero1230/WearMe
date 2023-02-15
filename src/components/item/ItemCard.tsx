@@ -49,7 +49,8 @@ const ItemCard = (props: Item) => {
 					</button>
 					<button
 						className="flex justify-center items-center bg-purple-500 rounded w-10"
-						onClick={notifyComingSoon}>
+						onClick={notifyComingSoon}
+						aria-label="add product to the wishlist">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"

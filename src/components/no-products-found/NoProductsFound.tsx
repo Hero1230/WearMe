@@ -1,5 +1,6 @@
 import { Item } from "@/types/types";
 import fetchData from "@/utils/FetchData";
+import Head from "next/head";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import ItemListPreview from "../item-list-preview/ItemListPreview";
@@ -12,6 +13,9 @@ export default function NoProductsFound() {
 	}, []);
 	return (
 		<div className="flex justify-center items-center  flex-col">
+			<Head>
+				<title>WearMe - Page not found 😵</title>
+			</Head>
 			<div>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

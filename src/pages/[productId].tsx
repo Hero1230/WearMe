@@ -7,6 +7,7 @@ import { Item } from "@/types/types";
 import fetchData from "@/utils/FetchData";
 import fetchSingleProduct from "@/utils/FetchSingleProduct";
 import { notifyAddItem, notifyComingSoon } from "@/utils/Notifications";
+import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -17,7 +18,7 @@ const ProductDetails = () => {
 	const router = useRouter();
 
 	const [product, setProduct] = useState<null | Item>(null);
-	const [data, setData] = useState<Item[] | null>(null);
+	const [previewProducts, setPreviewProducts] = useState<Item[] | null>(null);
 
 	const query = router.query.productId;
 	const queryImage = router.query.productId
@@ -26,7 +27,7 @@ const ProductDetails = () => {
 	const imageUrl = useGetImageUrl(queryImage);
 
 	useEffect(() => {
-		fetchData("bestseller", 3).then((prod) => setData(prod));
+		fetchData("bestseller", 3).then((prod) => setPreviewProducts(prod));
 	}, []);
 
 	useEffect(() => {
@@ -38,6 +39,9 @@ const ProductDetails = () => {
 	return (
 		<>
 			<div className="flex gap-[2rem] mx-[5rem] flex-col md:flex-row mb-[2rem]">
+				<Head>
+					<title>WearMe - {product?.title}</title>
+				</Head>
 				<div className="w-[100%] md:w-[45%]">
 					{imageUrl ? (
 						<Image
@@ -67,7 +71,8 @@ const ProductDetails = () => {
 						</button>
 						<button
 							className="flex justify-center items-center bg-purple-500 rounded md:p-4 p-6"
-							onClick={notifyComingSoon}>
+							onClick={notifyComingSoon}
+							aria-label="add product to the wishlist">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -84,7 +89,7 @@ const ProductDetails = () => {
 				title="You might like"
 				link="bestseller"
 				animation="fade-right"
-				data={data}
+				data={previewProducts}
 			/>
 		</>
 	);
