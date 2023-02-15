@@ -22,14 +22,26 @@ export default function Home(props: any) {
 				data={props.bestsellerData}
 				link="bestseller"
 				title="Bestsellers"
+				animation="fade-right"
 			/>
 			<ItemListPreview
 				data={props.recommendedData}
 				link="recommended"
 				title="Recommended"
+				animation="fade-right"
 			/>
-			<ItemListPreview data={props.midData} link="mid" title="Mid" />
-			<ItemListPreview data={props.lowData} link="low" title="Low" />
+			<ItemListPreview
+				data={props.midData}
+				link="mid"
+				title="Mid"
+				animation="fade-right"
+			/>
+			<ItemListPreview
+				data={props.lowData}
+				link="low"
+				title="Low"
+				animation="fade-right"
+			/>
 		</>
 	);
 }

@@ -80,7 +80,12 @@ const ProductDetails = () => {
 					</div>
 				</div>
 			</div>
-			<ItemListPreview title="You might like" link="bestseller" data={data} />
+			<ItemListPreview
+				title="You might like"
+				link="bestseller"
+				animation="fade-right"
+				data={data}
+			/>
 		</>
 	);
 };

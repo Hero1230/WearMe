@@ -4,7 +4,9 @@ import ItemCard from "../item/ItemCard";
 
 const ItemListPreview = (props: ItemListPreviewProps) => {
 	return (
-		<div className="w-[100%] flex justify-center flex-col lg:p-0 p-[1rem]">
+		<div
+			className="w-[100%] flex justify-center flex-col lg:p-0 p-[1rem]"
+			data-aos={props.animation}>
 			<Link
 				href={`/categories/${props.link}`}
 				className=" md:mx-[5rem] sm:ml-2 py-[1rem]">
