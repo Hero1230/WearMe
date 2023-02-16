@@ -1,6 +1,6 @@
 ## WearMe
 
-Technologies: Next.js, typescript, firebase
+Technologies: next.js, typescript, tailwind, firebase
 
 ## Getting Started
 
