@@ -13,7 +13,7 @@ const FilteredProducts = () => {
 	}
 
 	const query = router.query.slug[0];
-	const { data, isLoading, setCount, isAllFetch } = useFetchData(query);
+	const { data, isLoading, setCount, isAllFetched } = useFetchData(query);
 
 	if (!data || (data.length === 0 && !isLoading)) {
 		return <NoProductsFound />;
@@ -26,7 +26,7 @@ const FilteredProducts = () => {
 			</Head>
 			<ItemsList items={data} />
 			{isLoading && <Loader />}
-			{!isAllFetch && !isLoading && (
+			{!isAllFetched && !isLoading && (
 				<button
 					className="text-xl border-purple-500 border-2 lg:w-[10%] w-[40%] p-2 m-[1rem] rounded-md text-purple-500 hover:text-white hover:bg-purple-500"
 					onClick={() => setCount((prev) => prev + 1)}>
