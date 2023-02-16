@@ -28,6 +28,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
   
 ## Future
 
-  - write test (vitest + react-testing-library)
+  - write tests (vitest + react-testing-library)
   
   - migrate from firebase to (mongo + express) backend
