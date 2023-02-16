@@ -16,7 +16,7 @@ export default function useFetchData(category: string) {
 	const [lastVisible, setLastVisible] = useState<any>(null);
 	const [count, setCount] = useState(0);
 	const [isLoading, setIsLoading] = useState(false);
-	const [isAllFetch, setIsAllFetch] = useState(false);
+	const [isAllFetched, setIsAllFetched] = useState(false);
 	const q =
 		count === 0
 			? query(
@@ -35,7 +35,7 @@ export default function useFetchData(category: string) {
 			setIsLoading(true);
 			const documentSnapshots = await getDocs(q);
 			if (documentSnapshots.empty) {
-				setIsAllFetch(true);
+				setIsAllFetched(true);
 				setIsLoading(false);
 				return;
 			}
@@ -53,10 +53,10 @@ export default function useFetchData(category: string) {
 			setLastVisible(documentSnapshots.docs[documentSnapshots.docs.length - 1]);
 			setIsLoading(false);
 		};
-		if (!isAllFetch) {
+		if (!isAllFetched) {
 			fetchData();
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [count]);
-	return { data, setCount, isLoading, isAllFetch };
+	return { data, setCount, isLoading, isAllFetched };
 }
