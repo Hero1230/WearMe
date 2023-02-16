@@ -2,6 +2,8 @@
 
 Technologies: next.js, typescript, tailwind, firebase
 
+Design: Figma
+
 ## Getting Started
 
 Live: https://wear-me.vercel.app/
