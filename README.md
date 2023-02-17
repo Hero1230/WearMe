@@ -1,6 +1,6 @@
 ## WearMe
 
-Technologies: next.js, typescript, tailwind, firebase
+Technologies: next.js, typescript, tailwind, redux toolkit, firebase
 
 Design: Figma
 
