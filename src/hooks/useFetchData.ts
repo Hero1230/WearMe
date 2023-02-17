@@ -1,4 +1,4 @@
-import { ProductFetch } from "@/types/types";
+import { ProductFetch } from "../types/types";
 import {
 	collection,
 	getDocs,

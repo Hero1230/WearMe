@@ -1,15 +1,11 @@
 import { collection, getDocs, limit, query, where } from "firebase/firestore";
 import { db } from "../firebase/index";
+import { ProductFetch } from "../types/types";
 
-interface ProductFetch {
-	category: string;
-	description: string;
-	id: string;
-	price: number;
-	title: string;
-}
-
-export default async function fetchData(category: string, quantity: number) {
+export default async function fetchData(
+	category: string,
+	quantity: number
+): Promise<ProductFetch[]> {
 	const data: ProductFetch[] = [];
 	const q = query(
 		collection(db, "products"),

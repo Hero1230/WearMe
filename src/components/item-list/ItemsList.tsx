@@ -1,4 +1,4 @@
-import { ComponentItemProp } from "@/types/types";
+import { ComponentItemProp } from "../../types/types";
 import ItemCard from "../item/ItemCard";
 
 const ItemsList = (props: ComponentItemProp) => {

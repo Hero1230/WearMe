@@ -1,11 +1,11 @@
-import { increaseCartQuantity } from "@/features/cart/CartSlice";
-import { Item } from "@/types/types";
+import { increaseCartQuantity } from "../../features/cart/CartSlice";
+import { Item } from "../../types/types";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
-import useGetImageUrl from "@/hooks/useGetImageUrl";
+import useGetImageUrl from "../../hooks/useGetImageUrl";
 import Loader from "../loader/Loader";
 import Link from "next/link";
-import { notifyAddItem, notifyComingSoon } from "@/utils/Notifications";
+import { notifyAddItem, notifyComingSoon } from "../../utils/Notifications";
 
 const ItemCard = (props: Item) => {
 	const imageUrl = useGetImageUrl(`images/${props.id}.webp`);

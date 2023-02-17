@@ -1,4 +1,4 @@
-import { Item } from "@/types/types";
+import { Item } from "../types/types";
 
 export const getTotalQuantity = (items: Item[]) =>
 	items.reduce((quantity, item) => item.quantity! + quantity, 0);

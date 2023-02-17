@@ -1,4 +1,4 @@
-import { Item } from "@/types/types";
+import { Item } from "../types/types";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase/index";
 import { notifyErrorLoad } from "./Notifications";

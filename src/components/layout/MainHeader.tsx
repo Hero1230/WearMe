@@ -1,5 +1,5 @@
-import { CartState } from "@/types/types";
-import { getTotalQuantity } from "@/utils/Helpers";
+import { CartState } from "../../types/types";
+import { getTotalQuantity } from "../../utils/Helpers";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 
