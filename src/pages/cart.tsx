@@ -1,6 +1,6 @@
-import EmptyCart from "@/components/cart/EmptyCart";
-import FinalizeCard from "@/components/cart/FinalizeCard";
-import { CartState } from "@/types/types";
+import EmptyCart from "../components/cart/EmptyCart";
+import FinalizeCard from "../components/cart/FinalizeCard";
+import { CartState } from "../types/types";
 import Head from "next/head";
 import { useSelector } from "react-redux";
 import ItemCard from "../components/cart/ItemCard";

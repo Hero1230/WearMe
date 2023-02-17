@@ -1,6 +1,6 @@
-import { CartState } from "@/types/types";
-import { getTotalAmount } from "@/utils/Helpers";
-import { notifyComingSoon } from "@/utils/Notifications";
+import { CartState } from "../../types/types";
+import { getTotalAmount } from "../../utils/Helpers";
+import { notifyComingSoon } from "../../utils/Notifications";
 import { useSelector } from "react-redux";
 
 const FinalizeCard = () => {

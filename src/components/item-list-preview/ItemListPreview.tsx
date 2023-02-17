@@ -1,4 +1,4 @@
-import { ItemListPreviewProps } from "@/types/types";
+import { ItemListPreviewProps } from "../../types/types";
 import Link from "next/link";
 import ItemCard from "../item/ItemCard";
 

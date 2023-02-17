@@ -1,12 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
-import ItemListPreview from "@/components/item-list-preview/ItemListPreview";
-import Loader from "@/components/loader/Loader";
-import { increaseCartQuantity } from "@/features/cart/CartSlice";
-import useGetImageUrl from "@/hooks/useGetImageUrl";
-import { Item } from "@/types/types";
-import fetchData from "@/utils/FetchData";
-import fetchSingleProduct from "@/utils/FetchSingleProduct";
-import { notifyAddItem, notifyComingSoon } from "@/utils/Notifications";
+import ItemListPreview from "../components/item-list-preview/ItemListPreview";
+import Loader from "../components/loader/Loader";
+import { increaseCartQuantity } from "../features/cart/CartSlice";
+import useGetImageUrl from "../hooks/useGetImageUrl";
+import { Item } from "../types/types";
+import fetchData from "../utils/FetchData";
+import fetchSingleProduct from "../utils/FetchSingleProduct";
+import { notifyAddItem, notifyComingSoon } from "../utils/Notifications";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";

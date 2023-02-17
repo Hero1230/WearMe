@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import useFetchData from "../../hooks/useFetchData";
-import ItemsList from "@/components/item-list/ItemsList";
+import ItemsList from "../../components/item-list/ItemsList";
 import { useRouter } from "next/router";
-import Loader from "@/components/loader/Loader";
-import NoProductsFound from "@/components/no-products-found/NoProductsFound";
+import Loader from "../../components/loader/Loader";
+import NoProductsFound from "../../components/no-products-found/NoProductsFound";
 import Head from "next/head";
 
 const FilteredProducts = () => {

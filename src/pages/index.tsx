@@ -1,5 +1,5 @@
-import ItemListPreview from "@/components/item-list-preview/ItemListPreview";
-import fetchData from "@/utils/FetchData";
+import ItemListPreview from "../components/item-list-preview/ItemListPreview";
+import fetchData from "../utils/FetchData";
 import Head from "next/head";
 import Image from "next/image";
 import mainImage from "../../public/taylor-smith-aDZ5YIuedQg-unsplash.jpg";

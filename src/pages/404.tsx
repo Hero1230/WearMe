@@ -1,4 +1,4 @@
-import NoProductsFound from "@/components/no-products-found/NoProductsFound";
+import NoProductsFound from "../components/no-products-found/NoProductsFound";
 
 const NotFoundPage = () => {
 	return <NoProductsFound />;

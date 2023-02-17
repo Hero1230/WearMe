@@ -1,15 +1,15 @@
 import Image from "next/image";
-import { Item } from "@/types/types";
+import { Item } from "../../types/types";
 import { useDispatch } from "react-redux";
 import {
 	decreaseCartQuantity,
 	increaseCartQuantity,
 	removeFromCart,
-} from "@/features/cart/CartSlice";
-import useGetImageUrl from "@/hooks/useGetImageUrl";
+} from "../../features/cart/CartSlice";
+import useGetImageUrl from "../../hooks/useGetImageUrl";
 import Link from "next/link";
 import Loader from "../loader/Loader";
-import { notifyComingSoon } from "@/utils/Notifications";
+import { notifyComingSoon } from "../../utils/Notifications";
 
 const ItemCard = (props: Item) => {
 	const imageUrl = useGetImageUrl(`images/${props.id}.webp`);

@@ -1,5 +1,5 @@
-import { Item } from "@/types/types";
-import fetchData from "@/utils/FetchData";
+import { Item } from "../../types/types";
+import fetchData from "../../utils/FetchData";
 import Head from "next/head";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
