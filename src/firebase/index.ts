@@ -3,7 +3,7 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBsOKGUVCABRGgivZxZyod-LRn28l-3DQ4",
+  apiKey: process.env.API_KEY,
   authDomain: "wearme-4b393.firebaseapp.com",
   databaseURL: "https://wearme-4b393-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "wearme-4b393",
