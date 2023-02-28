@@ -1,8 +1,7 @@
 name: Runs All Unit tests
 
 on:
-  push:
-    branches: [ master ]
+  pull_request:
 
 jobs:
   build:
