@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { Item } from "../types/types";
-import { getTotalQuantity } from "../utils/Helpers";
+import { getTotalAmount, getTotalQuantity } from "../utils/Helpers";
 
 describe("getTotalQuantity", () => {
   it("should return total quantity of provided items in array", () => {
@@ -44,5 +44,65 @@ describe("getTotalQuantity", () => {
     ];
     const result = getTotalQuantity(array);
     expect(result).toBe(5);
+  });
+});
+
+describe("getTotalAmount", () => {
+  it("returns the total amount of all items", () => {
+    const array = [
+      { quantity: 2, title: "test", description: "test", price: 10, id: "test" },
+      { quantity: 1, title: "test", description: "test", price: 5, id: "test" },
+      { quantity: 3, title: "test", description: "test", price: 2.5, id: "test" },
+    ];
+
+    const expectedTotal = 32.5;
+    const actualTotal = getTotalAmount(array);
+
+    expect(actualTotal).toBe(expectedTotal);
+  });
+
+  it("returns 0 if the item list is empty", () => {
+    const array: Item[] = [];
+
+    const expectedTotal = 0;
+    const actualTotal = getTotalAmount(array);
+
+    expect(actualTotal).toBe(expectedTotal);
+  });
+
+  it("correctly handles items with a quantity of 0", () => {
+    const array = [
+      { quantity: 0, title: "test", description: "test", price: 10, id: "test" },
+      { quantity: 1, title: "test", description: "test", price: 5, id: "test" },
+    ];
+
+    const expectedTotal = 5;
+    const actualTotal = getTotalAmount(array);
+
+    expect(actualTotal).toBe(expectedTotal);
+  });
+
+  it("correctly handles items with a price of 0", () => {
+    const array = [
+      { quantity: 1, title: "test", description: "test", price: 0, id: "test" },
+      { quantity: 1, title: "test", description: "test", price: 0, id: "test" },
+    ];
+
+    const expectedTotal = 0;
+    const actualTotal = getTotalAmount(array);
+
+    expect(actualTotal).toBe(expectedTotal);
+  });
+
+  it("correctly handles items with a negative price", () => {
+    const array = [
+      { quantity: 2, title: "test", description: "test", price: -10, id: "test" },
+      { quantity: 1, title: "test", description: "test", price: 5, id: "test" },
+    ];
+
+    const expectedTotal = 5;
+    const actualTotal = getTotalAmount(array);
+
+    expect(actualTotal).toBe(expectedTotal);
   });
 });
