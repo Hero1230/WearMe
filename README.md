@@ -1,4 +1,4 @@
-## WearMe
+## WearMe 🛒
 
 Technologies: next.js, typescript, tailwind, redux toolkit, firebase
 
