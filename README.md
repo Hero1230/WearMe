@@ -22,16 +22,16 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Features
 
-  - add, remove item from the cart
-  
-  - inspect product details
-  
-  - get all products matching the category
-  
+- add, remove item from the cart
+
+- inspect product details
+
+- get all products matching the category
+
 ## Future
 
-  - write tests (vitest + react-testing-library)
-  
-  - migrate from firebase to (mongo + express) backend
+- write tests (vitest + react-testing-library)
 
-  - add stripe payments
+- migrate from firebase to (mongo + express) backend
+
+- add stripe payments
