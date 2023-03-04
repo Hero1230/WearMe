@@ -28,9 +28,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 - get all products matching the category
 
-## Future
+## In progress
 
 - write tests (vitest + react-testing-library)
+
+## Future
 
 - migrate from firebase to (mongo + express) backend
 
