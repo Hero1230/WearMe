@@ -1,6 +1,6 @@
-import { describe, expect, it } from "vitest";
-import { Item } from "../types/types";
-import { getTotalAmount, getTotalQuantity } from "../utils/Helpers";
+import { describe, it, expect } from "vitest";
+import { Item } from "../../types/types";
+import { getTotalAmount, getTotalQuantity } from "../../utils/Helpers";
 
 describe("getTotalQuantity", () => {
   it("should return total quantity of provided items in array", () => {
